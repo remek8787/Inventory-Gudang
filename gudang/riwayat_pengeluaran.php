@@ -66,6 +66,25 @@ $query .= " ORDER BY barang_keluar.tanggal_keluar DESC";
 $stmt = $pdo->prepare($query);
 $stmt->execute($params);
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+    header('Content-Type: application/json; charset=utf-8');
+    ob_start();
+    if (count($data) > 0) {
+        foreach ($data as $row) {
+            echo '<tr>';
+            foreach (['id_barang','nama_barang','tipe_barang','mac_address','nama_toko','ekspedisi','belanja_via','siapa_order','petugas_qc','tanggal_order','tanggal_datang','tanggal_qc','nama_teknisi','keterangan','penggunaan','petugas_admin','tanggal_keluar'] as $col) {
+                echo '<td>' . htmlspecialchars($row[$col] ?? '') . '</td>';
+            }
+            echo '</tr>';
+        }
+    } else {
+        echo '<tr><td colspan="17" class="text-center text-muted py-4">Tidak ada data yang ditemukan.</td></tr>';
+    }
+    echo json_encode(['ok'=>true,'html'=>ob_get_clean(),'total'=>count($data)]);
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -110,9 +129,10 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- Main Content -->
             <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="container mt-5">
-                    <h1 class="text-center mb-4">Riwayat Pengeluaran Barang</h1>
+                    <h1 class="text-center mb-2 page-title">Riwayat Pengeluaran Barang</h1>
+                    <div id="riwayat-pengeluaran-counter" class="text-center text-muted mb-4">Menampilkan <?php echo count($data); ?> data pengeluaran</div>
                     <!-- Form Filter Berdasarkan Tanggal -->
-                    <form method="GET" action="" class="mb-4">
+                    <form method="GET" action="" class="mb-4 dsg-ajax-search" data-target="#riwayat-pengeluaran-body" data-counter="#riwayat-pengeluaran-counter">
                         <div class="row mb-3">
                             <div class="col-md-8">
                                 <label for="search" class="form-label">Cari (ID Barang / Nama Barang / Mac Address)</label>
@@ -163,7 +183,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Tanggal Keluar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="riwayat-pengeluaran-body">
                             <?php if (count($data) > 0): ?>
                                 <?php foreach ($data as $row): ?>
                                     <tr>
@@ -198,5 +218,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 <script src="/assets/js/dsg-modern.js"></script>
+<script src="/assets/js/dsg-ajax-search.js"></script>
 </body>
 </html>

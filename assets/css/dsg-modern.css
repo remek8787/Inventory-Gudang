@@ -77,3 +77,9 @@ a{transition:.2s ease;color:var(--dsg-primary-2)}
 .dsg-ajax-search{background:#fff;border:1px solid var(--dsg-border);border-radius:20px;padding:16px;box-shadow:var(--dsg-shadow)}
 .dsg-search-busy{opacity:.78;pointer-events:none}.dsg-search-busy:after{content:'Memuat hasil...';display:block;margin-top:10px;color:var(--dsg-primary);font-weight:800}
 #belanja-dashboard-counter,#tambah-barang-counter{display:inline-block;background:#ecfeff;border:1px solid #bae6fd;color:#0f766e;border-radius:999px;padding:8px 14px;font-weight:800}
+
+
+.dsg-theme-toggle{position:fixed;right:22px;bottom:78px;z-index:9999;border-radius:999px!important;width:48px;height:48px;background:#0f172a!important;color:#fff!important}
+body.dsg-dark{--dsg-bg:#08111f;--dsg-surface:#0f172a;--dsg-text:#e5eefb;--dsg-muted:#9fb0c7;--dsg-border:#22304a;background:radial-gradient(circle at top left, rgba(14,165,233,.14), transparent 30rem),#08111f!important;color:#e5eefb!important}
+body.dsg-dark .card,body.dsg-dark .table,body.dsg-dark .modal-content,body.dsg-dark .list-group-item,body.dsg-dark .dsg-kpi,body.dsg-dark .dsg-ajax-search{background:#0f172a!important;color:#e5eefb!important;border-color:#22304a!important}
+body.dsg-dark .table td,body.dsg-dark .table th{border-color:#22304a!important}body.dsg-dark .form-control,body.dsg-dark .custom-select{background:#101b2e!important;color:#e5eefb!important;border-color:#334155!important}body.dsg-dark .text-muted{color:#9fb0c7!important}

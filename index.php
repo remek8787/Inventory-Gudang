@@ -117,6 +117,10 @@ $role = $_SESSION['role'];
     <!-- Main Content -->
     <div class="content">
 <div class="dsg-shell-note"><strong>Reminder Admin:</strong> input barang → QC → finish good → barang keluar. Data rapi = stok aman dan mudah dilacak.</div>
+        <div class="dsg-kpi-grid">
+            <div class="dsg-kpi"><small>Statistik</small><br><b>Live</b><p class="mb-0 text-muted">Pantau stok, waiting QC, dan barang keluar.</p><a href="inventory_metrics.php" class="btn btn-primary btn-sm mt-3">Buka Statistik</a></div>
+            <div class="dsg-kpi"><small>Tutorial</small><br><b>Admin</b><p class="mb-0 text-muted">Panduan alur receiving, QC, gudang, dan pengeluaran.</p><a href="admin_tutorial.php" class="btn btn-success btn-sm mt-3">Buka Tutorial</a></div>
+        </div>
     <h2 class="text-center dashboard-header">
     Welcome to the Dentanet V1.2 Warehouse Application
 </h2>

@@ -139,3 +139,19 @@ Peningkatan:
 Verifikasi live:
 - `https://inventory.dentasejahteragroup.my.id/belanja/dhasboar_barang_belanja.php?ajax=1&search=&bulan=&tahun=` mengembalikan JSON `ok: true`.
 - `https://inventory.dentasejahteragroup.my.id/belanja/tambah_barang.php?ajax=1&search_id=&search_name=&search_type=&search_date=` mengembalikan JSON `ok: true`.
+
+
+## Dashboard + Extra AJAX + Dark Mode 2026-05-04
+
+Peningkatan read-only tanpa merusak DB:
+- Menambahkan `inventory_metrics.php` untuk statistik inventory: total barang input, waiting QC, total stok gudang, barang keluar bulan berjalan, stok rendah, dan barang keluar terbaru.
+- Menambahkan link statistik dan tutorial di dashboard utama `index.php`.
+- Menambahkan AJAX search untuk `gudang/riwayat_pengeluaran.php`.
+- Menambahkan AJAX search untuk `gudang/barang_yang_sudah_keluar.php`.
+- Mengubah query search `barang_yang_sudah_keluar.php` menjadi prepared statement PDO.
+- Menambahkan dark mode toggle via `assets/js/dsg-modern.js` + CSS tambahan.
+
+Verifikasi live:
+- `gudang/riwayat_pengeluaran.php?ajax=1...` return JSON `ok: true`.
+- `gudang/barang_yang_sudah_keluar.php?ajax=1...` return JSON `ok: true`.
+- `inventory_metrics.php` aman redirect ke login jika belum login.
