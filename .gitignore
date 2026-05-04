@@ -1,0 +1,15 @@
+# Local/private config
+belanja/db.php
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local backup artifacts
+*.zip
+*.bak
+*.bak-local
+oc_temp_*.php

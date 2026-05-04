@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gudang Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-menu {
+            margin-bottom: 20px;
+        }
+        .card-menu:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.25rem;
+        }
+        .menu-title {
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gudang Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='barang_masuk_gudang.php'">
+                    <div class="card-header">Barang Masuk Gudang</div>
+                    <div class="card-body">
+                        <p class="menu-title">Lihat daftar barang yang masuk ke gudang</p>
+                        <p class="text-muted">Manage incoming items in the warehouse.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='barang_keluar.php'">
+                    <div class="card-header">Barang Keluar Gudang</div>
+                    <div class="card-body">
+                        <p class="menu-title">Lihat barang yang sudah keluar dari gudang</p>
+                        <p class="text-muted">Manage outgoing items in the warehouse.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='barang_yang_sudah_keluar.php'">
+                    <div class="card-header">Barang Sudah Keluar</div>
+                    <div class="card-body">
+                        <p class="menu-title">Daftar barang yang sudah keluar</p>
+                        <p class="text-muted">View the list of dispatched items.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='stok_gudang.php'">
+                    <div class="card-header">Stok Barang Gudang</div>
+                    <div class="card-body">
+                        <p class="menu-title">Lihat stok barang di gudang</p>
+                        <p class="text-muted">Check warehouse item stocks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='pengembalian_stok.php'">
+                    <div class="card-header">Pengembalian Barang</div>
+                    <div class="card-body">
+                        <p class="menu-title">Pengembalian barang ke gudang</p>
+                        <p class="text-muted">Return items back to the warehouse.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='permintaan_barang.php'">
+                    <div class="card-header">Permintaan Barang</div>
+                    <div class="card-body">
+                        <p class="menu-title">Ajukan permintaan barang</p>
+                        <p class="text-muted">Request items from the warehouse.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='persetujuan_admin.php'">
+                    <div class="card-header">Persetujuan Permintaan</div>
+                    <div class="card-body">
+                        <p class="menu-title">Setujui permintaan barang dari teknisi</p>
+                        <p class="text-muted">Approve or reject item requests from technicians.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-menu" onclick="window.location.href='riwayat_pengeluaran.php'">
+                    <div class="card-header">Riwayat Pengeluaran</div>
+                    <div class="card-body">
+                        <p class="menu-title">Lihat riwayat pengeluaran barang</p>
+                        <p class="text-muted">View and export the history of item releases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

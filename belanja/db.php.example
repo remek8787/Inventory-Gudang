@@ -1,0 +1,17 @@
+<?php
+// Copy file ini menjadi belanja/db.php di hosting/lokal, lalu isi credential DB.
+$host = 'localhost';
+$dbname = 'ISI_NAMA_DATABASE';
+$username = 'ISI_USERNAME_DATABASE';
+$password = 'ISI_PASSWORD_DATABASE';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("set names utf8");
+} catch (PDOException $e) {
+    error_log('Koneksi database gagal: ' . $e->getMessage());
+    http_response_code(500);
+    die('Koneksi database gagal. Silakan hubungi administrator.');
+}
+?>
