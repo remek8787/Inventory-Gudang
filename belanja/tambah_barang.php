@@ -87,43 +87,77 @@ $search_name = $_GET['search_name'] ?? '';
 $search_type = $_GET['search_type'] ?? '';
 $search_date = $_GET['search_date'] ?? '';
 
-// Query data dengan filter dan pagination
-$query = "SELECT * FROM items WHERE 1=1";
+// Query data dengan filter dan pagination (prepared agar aman)
+$where = [];
+$params = [];
 if ($search_id) {
-    $query .= " AND id_barang LIKE '%$search_id%'";
+    $where[] = "id_barang LIKE :search_id";
+    $params[':search_id'] = "%$search_id%";
 }
 if ($search_name) {
-    $query .= " AND nama_barang LIKE '%$search_name%'";
+    $where[] = "nama_barang LIKE :search_name";
+    $params[':search_name'] = "%$search_name%";
 }
 if ($search_type) {
-    $query .= " AND tipe_barang LIKE '%$search_type%'";
+    $where[] = "tipe_barang LIKE :search_type";
+    $params[':search_type'] = "%$search_type%";
 }
 if ($search_date) {
-    $query .= " AND (tanggal_order = '$search_date' OR tanggal_datang = '$search_date')";
+    $where[] = "(tanggal_order = :search_date OR tanggal_datang = :search_date)";
+    $params[':search_date'] = $search_date;
 }
-$query .= " ORDER BY tanggal_order DESC LIMIT $limit OFFSET $offset";
+$whereSql = $where ? (' WHERE ' . implode(' AND ', $where)) : '';
 
-$stmt = $pdo->query($query);
+$stmt = $pdo->prepare("SELECT * FROM items $whereSql ORDER BY tanggal_order DESC LIMIT :limit OFFSET :offset");
+foreach ($params as $key => $value) {
+    $stmt->bindValue($key, $value);
+}
+$stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+$stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+$stmt->execute();
 $items = $stmt->fetchAll();
 
-// Hitung total data untuk pagination
-$total_query = "SELECT COUNT(*) as total FROM items WHERE 1=1";
-if ($search_id) {
-    $total_query .= " AND id_barang LIKE '%$search_id%'";
+$total_stmt = $pdo->prepare("SELECT COUNT(*) as total FROM items $whereSql");
+foreach ($params as $key => $value) {
+    $total_stmt->bindValue($key, $value);
 }
-if ($search_name) {
-    $total_query .= " AND nama_barang LIKE '%$search_name%'";
-}
-if ($search_type) {
-    $total_query .= " AND tipe_barang LIKE '%$search_type%'";
-}
-if ($search_date) {
-    $total_query .= " AND (tanggal_order = '$search_date' OR tanggal_datang = '$search_date')";
-}
-
-$total_result = $pdo->query($total_query)->fetch();
+$total_stmt->execute();
+$total_result = $total_stmt->fetch();
 $total_items = $total_result['total'];
 $total_pages = ceil($total_items / $limit);
+
+if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+    header('Content-Type: application/json; charset=utf-8');
+    ob_start();
+    if ($items) {
+        foreach ($items as $item) {
+            $id = htmlspecialchars($item['id_barang'], ENT_QUOTES, 'UTF-8');
+            echo '<tr>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['id_barang']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['nama_barang']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['tipe_barang']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['stok']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['satuan_barang']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['nama_toko']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['ekspedisi']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['belanja_via']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['siapa_order']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['tanggal_order']) . '</td>';
+            echo '<td class="py-2 px-4 border-b">' . htmlspecialchars($item['tanggal_datang']) . '</td>';
+            echo '<td class="py-2 px-4 border-b space-x-2">';
+            echo '<a href="tambah_barang.php?delete=' . $id . '" class="text-red-600 hover:text-red-800"><i class="fas fa-trash"></i></a> ';
+            echo '<a href="edit_barang.php?id=' . $id . '" class="text-yellow-600 hover:text-yellow-800"><i class="fas fa-edit"></i></a> ';
+            echo '<button class="text-blue-600 hover:text-blue-800" onclick="printLabel(\'' . $id . '\')"><i class="fas fa-print"></i></button> ';
+            echo '<a href="../quality_control/qc_dashboard.php?id=' . $id . '" class="text-green-600 hover:text-green-800"><i class="fas fa-check"></i></a>';
+            echo '</td></tr>';
+        }
+    } else {
+        echo '<tr><td colspan="12" class="text-center py-4 text-gray-500">Tidak ada data ditemukan</td></tr>';
+    }
+    $html = ob_get_clean();
+    echo json_encode(['ok' => true, 'html' => $html, 'total' => (int)$total_items, 'page' => (int)$page, 'totalPages' => (int)$total_pages]);
+    exit;
+}
 ?>
 
 <html lang="en">
@@ -304,10 +338,11 @@ $total_pages = ceil($total_items / $limit);
 <p class="text-center text-sm italic text-gray-600">
     Mohon Di Cek Kembali Pastikan Data Sudah Sesuai
 </p>
+<div id="tambah-barang-counter" class="text-center text-sm text-gray-500 mb-4">Menampilkan <?php echo (int)$total_items; ?> data barang</div>
 <div class="container mx-auto p-4 bg-white shadow-md rounded">
 
     <!-- Form Pencarian -->
-    <form method="GET" class="mb-4">
+    <form method="GET" class="mb-4 dsg-ajax-search" data-target="#tambah-barang-body" data-counter="#tambah-barang-counter">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input type="text" name="search_id" placeholder="Cari ID Barang" value="<?php echo htmlspecialchars($search_id); ?>" class="p-2 border rounded">
             <input type="text" name="search_name" placeholder="Cari Nama Barang" value="<?php echo htmlspecialchars($search_name); ?>" class="p-2 border rounded">
@@ -354,7 +389,7 @@ $total_pages = ceil($total_items / $limit);
                     <th class="py-2 px-4 border-b">Aksi</th>
                 </tr>
             </thead>
-		<tbody>
+		<tbody id="tambah-barang-body">
     <?php if ($items): ?>
         <?php foreach ($items as $item): ?>
             <tr>
@@ -462,5 +497,6 @@ function printLabel(id_barang) {
 </script>
 
 <script src="/assets/js/dsg-modern.js"></script>
+<script src="/assets/js/dsg-ajax-search.js"></script>
 </body>
 </html>

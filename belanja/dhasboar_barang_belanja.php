@@ -64,6 +64,40 @@ $totalStmt = $pdo->prepare("SELECT COUNT(*) FROM items WHERE
 $totalStmt->execute([$bulan, $bulan, $tahun, $tahun, "%$search%", "%$search%", "%$search%", "%$search%", "%$search%"]);
 $totalRows = $totalStmt->fetchColumn();
 $totalPages = ceil($totalRows / $limit);
+
+if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
+    header('Content-Type: application/json; charset=utf-8');
+    ob_start();
+    if (!empty($data)) {
+        foreach ($data as $row) {
+            echo '<tr>';
+            echo '<td>' . htmlspecialchars($row['id_barang']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['nama_barang']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['tipe_barang']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['stok']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['satuan_barang']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['nama_toko']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['ekspedisi']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['belanja_via']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['siapa_order']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['tanggal_order']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['tanggal_datang']) . '</td>';
+            echo '</tr>';
+        }
+    } else {
+        echo '<tr><td colspan="11" class="text-center text-muted py-4">Tidak ada data ditemukan</td></tr>';
+    }
+    $html = ob_get_clean();
+    echo json_encode([
+        'ok' => true,
+        'html' => $html,
+        'total' => (int)$totalRows,
+        'page' => (int)$page,
+        'totalPages' => (int)$totalPages,
+    ]);
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -91,10 +125,11 @@ $totalPages = ceil($totalRows / $limit);
 
     <!-- Main Content -->
     <div class="container mt-4">
-        <h2 class="mb-4 text-center">Dashboard Barang Belanja</h2>
+        <h2 class="mb-2 text-center page-title">Dashboard Barang Belanja</h2>
+        <div id="belanja-dashboard-counter" class="text-center text-muted mb-4">Menampilkan <?php echo (int)$totalRows; ?> data barang</div>
 
         <!-- Form untuk Filter -->
-        <form class="form-inline mb-4" method="GET">
+        <form class="form-inline mb-3 dsg-ajax-search" method="GET" data-target="#belanja-dashboard-body" data-counter="#belanja-dashboard-counter">
             <select name="bulan" class="form-control mr-2">
                 <option value="">Semua Bulan</option>
                 <?php for ($i = 1; $i <= 12; $i++): ?>
@@ -130,7 +165,7 @@ $totalPages = ceil($totalRows / $limit);
                     <th>Tanggal Datang</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="belanja-dashboard-body">
                 <?php if (!empty($data)): ?>
                     <?php foreach ($data as $row): ?>
                         <tr>
@@ -155,5 +190,6 @@ $totalPages = ceil($totalRows / $limit);
     </div>
 </div>
 <script src="/assets/js/dsg-modern.js"></script>
+<script src="/assets/js/dsg-ajax-search.js"></script>
 </body>
 </html>

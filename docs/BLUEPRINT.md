@@ -125,3 +125,17 @@ Catatan teknis:
 - Pendekatan sengaja **non-invasive** agar logic PHP native lama tidak rusak.
 - Belum menggunakan build tool React/Vite agar tetap kompatibel dengan shared hosting FTP.
 - React/Tailwind bisa dipakai di fase berikutnya untuk modul baru atau redesign dashboard penuh.
+
+
+## AJAX Search Improvement 2026-05-04
+
+Peningkatan:
+- `belanja/dhasboar_barang_belanja.php` mendukung endpoint JSON `?ajax=1`.
+- `belanja/tambah_barang.php` mendukung endpoint JSON `?ajax=1`.
+- Search form memakai `assets/js/dsg-ajax-search.js` dengan debounce, sehingga filter/search berjalan tanpa reload halaman penuh.
+- Search pada `belanja/tambah_barang.php` diganti dari raw SQL string concatenation menjadi prepared statement PDO untuk mengurangi risiko SQL injection.
+- Counter hasil pencarian tampil realtime.
+
+Verifikasi live:
+- `https://inventory.dentasejahteragroup.my.id/belanja/dhasboar_barang_belanja.php?ajax=1&search=&bulan=&tahun=` mengembalikan JSON `ok: true`.
+- `https://inventory.dentasejahteragroup.my.id/belanja/tambah_barang.php?ajax=1&search_id=&search_name=&search_type=&search_date=` mengembalikan JSON `ok: true`.
