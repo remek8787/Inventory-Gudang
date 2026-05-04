@@ -181,3 +181,25 @@ Verifikasi live:
 - `gudang/barang_masuk_gudang.php` HTTP 200.
 - `quality_control/qc_dashboard.php` HTTP 200.
 - `gudang/stok_gudang.php` HTTP 200.
+
+
+## Fix List Selesai QC 2026-05-04
+
+Masalah:
+- `quality_control/list_selesai_qc.php` memang HTTP 200, tetapi belum beres secara UX/logic.
+- Halaman memuat terlalu banyak row tanpa pagination sehingga berat.
+- Search masih sempit/exact dan belum AJAX.
+- Field petugas order di beberapa bagian tidak konsisten.
+
+Perbaikan:
+- Rewrite halaman menjadi versi paginated 25 row per halaman.
+- Search multi-field: ID barang, nama barang, tipe, MAC, toko, ekspedisi, petugas order, petugas QC.
+- AJAX endpoint `?ajax=1` untuk search realtime.
+- Export CSV mengikuti filter.
+- Query search menggunakan prepared statement PDO.
+- Kolom `Petugas Order` menggunakan field `siapa_order`.
+- Tombol `Kirim ke Gudang` tetap memakai POST ke `../gudang/barang_masuk_gudang.php` agar alur lama tetap berjalan.
+
+Verifikasi:
+- URL utama HTTP 200.
+- `quality_control/list_selesai_qc.php?ajax=1&id_barang=MODEM` return JSON `ok: true`.
