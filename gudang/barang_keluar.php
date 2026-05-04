@@ -51,6 +51,7 @@ $stmt = $pdo->query("SELECT * FROM barang_masuk_gudang");
     <title>Form Barang Keluar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto mt-8">
@@ -128,5 +129,6 @@ $stmt = $pdo->query("SELECT * FROM barang_masuk_gudang");
             </div>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

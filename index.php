@@ -59,6 +59,7 @@ $role = $_SESSION['role'];
             margin-bottom: 30px;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
@@ -115,6 +116,7 @@ $role = $_SESSION['role'];
 
     <!-- Main Content -->
     <div class="content">
+<div class="dsg-shell-note"><strong>Reminder Admin:</strong> input barang → QC → finish good → barang keluar. Data rapi = stok aman dan mudah dilacak.</div>
     <h2 class="text-center dashboard-header">
     Welcome to the Dentanet V1.2 Warehouse Application
 </h2>
@@ -163,5 +165,6 @@ $role = $_SESSION['role'];
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

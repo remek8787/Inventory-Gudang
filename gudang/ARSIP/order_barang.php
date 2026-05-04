@@ -24,6 +24,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Order Barang</title>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 
@@ -71,5 +72,6 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
     </form>
 <?php } ?>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

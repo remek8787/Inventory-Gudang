@@ -19,6 +19,7 @@ $stmt = $pdo->query("SELECT tipe_barang, COUNT(*) as total_stok, petugas_qc FROM
             font-weight: bold;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -62,5 +63,6 @@ $stmt = $pdo->query("SELECT tipe_barang, COUNT(*) as total_stok, petugas_qc FROM
             </tbody>
         </table>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

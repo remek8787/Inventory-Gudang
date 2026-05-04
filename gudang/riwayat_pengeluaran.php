@@ -73,6 +73,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <title>Riwayat Pengeluaran Barang</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
@@ -196,5 +197,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

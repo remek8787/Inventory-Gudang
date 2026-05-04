@@ -1,0 +1,76 @@
+:root{
+  --dsg-bg:#f4f7fb;
+  --dsg-surface:#ffffff;
+  --dsg-text:#14213d;
+  --dsg-muted:#64748b;
+  --dsg-primary:#0f766e;
+  --dsg-primary-2:#0ea5e9;
+  --dsg-accent:#f59e0b;
+  --dsg-danger:#dc2626;
+  --dsg-border:#e2e8f0;
+  --dsg-shadow:0 18px 45px rgba(15,23,42,.10);
+  --dsg-radius:18px;
+}
+*{box-sizing:border-box}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left, rgba(14,165,233,.14), transparent 30rem),
+    radial-gradient(circle at bottom right, rgba(15,118,110,.16), transparent 28rem),
+    var(--dsg-bg)!important;
+  color:var(--dsg-text)!important;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+}
+a{transition:.2s ease;color:var(--dsg-primary-2)}
+.btn,.form-control,.custom-select{border-radius:12px!important}
+.btn{font-weight:700;box-shadow:0 8px 18px rgba(15,23,42,.08);border:0!important}
+.btn-primary{background:linear-gradient(135deg,var(--dsg-primary),var(--dsg-primary-2))!important}
+.btn-success{background:linear-gradient(135deg,#16a34a,#22c55e)!important}
+.btn-danger{background:linear-gradient(135deg,#dc2626,#f97316)!important}
+.btn-warning{background:linear-gradient(135deg,#f59e0b,#fbbf24)!important;color:#111827!important}
+.form-control:focus,.custom-select:focus{border-color:var(--dsg-primary-2)!important;box-shadow:0 0 0 .2rem rgba(14,165,233,.18)!important}
+.card,.table,.modal-content,.jumbotron,.list-group-item{
+  border:1px solid rgba(226,232,240,.92)!important;
+  border-radius:var(--dsg-radius)!important;
+  box-shadow:var(--dsg-shadow)!important;
+  overflow:hidden;
+}
+.card-header,.modal-header{background:linear-gradient(135deg,rgba(15,118,110,.10),rgba(14,165,233,.10))!important;border-bottom:1px solid var(--dsg-border)!important}
+.table{background:var(--dsg-surface)!important}
+.table thead th{
+  background:#0f172a!important;color:#fff!important;border:0!important;
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;
+}
+.table td,.table th{vertical-align:middle!important}
+.table tbody tr:hover{background:#ecfeff!important}
+.sidebar{
+  background:linear-gradient(180deg,#0f172a 0%,#134e4a 100%)!important;
+  box-shadow:18px 0 40px rgba(15,23,42,.16);
+  position:sticky;top:0;align-self:flex-start;min-height:100vh;
+}
+.sidebar h4,.sidebar h3{font-weight:900;letter-spacing:.02em;margin-bottom:1.25rem!important}
+.sidebar a{border-radius:14px!important;margin:.18rem 0;color:rgba(255,255,255,.92)!important}
+.sidebar a:hover{background:rgba(255,255,255,.13)!important;transform:translateX(4px)}
+.content{width:100%;padding:28px!important}
+.dashboard-header,.page-title{font-weight:900;color:#0f172a;letter-spacing:-.03em}
+.dsg-shell-note{
+  background:linear-gradient(135deg,#ecfeff,#f0fdf4);
+  border:1px solid #bae6fd;border-radius:18px;padding:16px 18px;margin:0 0 22px;
+  box-shadow:0 14px 28px rgba(15,23,42,.08);
+}
+.dsg-shell-note strong{color:#0f766e}
+.dsg-login-body{
+  display:flex!important;align-items:center;justify-content:center;padding:24px;
+  background:linear-gradient(135deg,#0f172a,#134e4a 50%,#0ea5e9)!important;
+}
+.dsg-login-card{
+  width:100%;max-width:430px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);
+  border-radius:28px;padding:34px;box-shadow:0 28px 70px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.45)
+}
+.dsg-brand-badge{display:inline-flex;align-items:center;gap:10px;background:#ecfeff;color:#0f766e;border-radius:999px;padding:8px 13px;font-weight:800;font-size:.8rem;margin-bottom:18px}
+.dsg-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:18px 0 28px}
+.dsg-kpi{background:#fff;border:1px solid var(--dsg-border);border-radius:20px;padding:18px;box-shadow:var(--dsg-shadow)}
+.dsg-kpi small{color:var(--dsg-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}.dsg-kpi b{font-size:1.65rem;color:#0f172a}
+.dsg-fab-help{position:fixed;right:22px;bottom:22px;z-index:9999;border-radius:999px!important;padding:13px 18px!important;background:linear-gradient(135deg,var(--dsg-primary),var(--dsg-primary-2))!important;color:#fff!important;box-shadow:0 18px 40px rgba(14,165,233,.32)!important}
+.alert{border-radius:16px!important;border:0!important;box-shadow:0 10px 25px rgba(15,23,42,.08)}
+@media(max-width:768px){body{display:block!important}.sidebar{position:relative;min-height:auto;width:100%!important}.content{padding:18px!important}.table-responsive{border-radius:18px}}

@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pengeluaran Barang</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -87,5 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary">Konfirmasi Pengeluaran</button>
         </form>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

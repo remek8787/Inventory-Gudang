@@ -54,6 +54,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <title>Reset Pengeluaran Barang</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -104,5 +105,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

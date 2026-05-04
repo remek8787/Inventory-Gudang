@@ -22,6 +22,7 @@ $result_order = $pdo->query($query_order);
         .rejected { color: red; }
         .pending { color: orange; }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 
@@ -58,5 +59,6 @@ $result_order = $pdo->query($query_order);
     <?php } ?>
 </table>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

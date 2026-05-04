@@ -172,6 +172,7 @@ $total_pages = ceil($total_items / $limit);
         }
     }
 </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <!-- Reciving Panel -->
@@ -460,5 +461,6 @@ function printLabel(id_barang) {
 }
 </script>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

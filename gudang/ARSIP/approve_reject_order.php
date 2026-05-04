@@ -59,6 +59,7 @@ if (isset($_POST['update_status'])) {
     <title>Persetujuan Order Barang</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 
@@ -112,5 +113,6 @@ if (isset($_POST['update_status'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

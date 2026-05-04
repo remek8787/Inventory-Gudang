@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ganti Password</title>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -34,5 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary">Ganti Password</button>
     </form>
 </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

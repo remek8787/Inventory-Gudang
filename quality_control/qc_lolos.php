@@ -70,6 +70,7 @@ $total_pages = ceil($total_rows / $records_per_page);
         .content { margin-left: 220px; padding: 20px; }
         .form-control-inline { display: inline-block; width: auto; }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <!-- SIDE PANEL -->
@@ -140,5 +141,6 @@ $total_pages = ceil($total_rows / $records_per_page);
             </ul>
         </nav>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

@@ -33,6 +33,7 @@ $barang_keluar = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rekapitulasi Barang Keluar</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -94,5 +95,6 @@ $barang_keluar = $stmt->fetchAll();
             </table>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

@@ -119,6 +119,7 @@ if (isset($_POST['edit'])) {
             }
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 
@@ -314,5 +315,6 @@ if (isset($_POST['edit'])) {
 
 </script>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

@@ -23,6 +23,7 @@ $stmt = $pdo->query($query);
             font-weight: bold;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -51,5 +52,6 @@ $stmt = $pdo->query($query);
             </table>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

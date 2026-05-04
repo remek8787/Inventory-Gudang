@@ -31,6 +31,7 @@ if (isset($_POST['export'])) {
 <head>
     <title>Ekspor Barang Keluar</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -47,5 +48,6 @@ if (isset($_POST['export'])) {
         <button type="submit" name="export" class="btn btn-primary">Ekspor Data</button>
     </form>
 </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

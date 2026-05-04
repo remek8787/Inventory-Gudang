@@ -12,6 +12,7 @@ $page = $_GET['page'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Pergudangan</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -42,5 +43,6 @@ $page = $_GET['page'] ?? '';
             ?>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

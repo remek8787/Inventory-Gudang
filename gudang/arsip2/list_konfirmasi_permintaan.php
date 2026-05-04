@@ -19,6 +19,7 @@ $permintaan_list = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Konfirmasi Permintaan Barang</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -55,5 +56,6 @@ $permintaan_list = $stmt->fetchAll();
             </tbody>
         </table>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

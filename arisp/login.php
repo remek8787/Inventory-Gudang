@@ -46,15 +46,17 @@
             background-color: #218838;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
-<body>
+<body class="dsg-login-body">
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login_process.php" method="POST">
+        <div class="dsg-login-card"><div class="dsg-brand-badge">📦 DSG Inventory</div><h3 class="mb-2">Masuk Admin</h3><p class="text-muted mb-4">Kelola barang, QC, dan gudang dalam satu panel.</p><form action="login_process.php" method="POST">
             <input type="text" name="username" placeholder="Username" required><br>
             <input type="password" name="password" placeholder="Password" required><br>
             <button type="submit">Login</button>
-        </form>
+        </form><p class="text-muted small mt-4 mb-0">Tips: pastikan username dan password sesuai role akses.</p></div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

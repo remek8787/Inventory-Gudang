@@ -73,6 +73,7 @@ $totalPages = ceil($totalRows / $limit);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Barang Belanja</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="d-flex">
@@ -153,5 +154,6 @@ $totalPages = ceil($totalRows / $limit);
         </table>
     </div>
 </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

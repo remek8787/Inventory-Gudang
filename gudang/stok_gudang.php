@@ -22,6 +22,7 @@ $stmt = $pdo->query($query);
             font-weight: bold;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
@@ -81,5 +82,6 @@ $stmt = $pdo->query($query);
         </div>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

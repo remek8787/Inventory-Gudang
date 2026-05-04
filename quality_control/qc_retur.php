@@ -76,6 +76,7 @@ if (isset($_GET['search']) || isset($_GET['tanggal_mulai']) || isset($_GET['tang
             vertical-align: middle;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="sidebar">
@@ -191,6 +192,7 @@ if (isset($_GET['search']) || isset($_GET['tanggal_mulai']) || isset($_GET['tang
         </table>
     </div>
 </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>
 

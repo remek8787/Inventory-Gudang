@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kode_unik'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konfirmasi Permintaan Barang</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -67,5 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kode_unik'])) {
             <p class="text-danger">Permintaan dengan kode unik tersebut tidak ditemukan.</p>
         <?php endif; ?>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

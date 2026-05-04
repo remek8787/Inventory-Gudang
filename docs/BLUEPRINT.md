@@ -109,3 +109,19 @@ Perlu diganti ke credential database hosting setelah DB dibuat.
 3. Import SQL ke phpMyAdmin/database hosting.
 4. Upload file aplikasi ke root subdomain via FTP.
 5. Test `https://inventory.dentasejahteragroup.my.id/`.
+
+
+## UI/UX Modernization 2026-05-04
+
+Perubahan awal:
+- Menambahkan stylesheet global `assets/css/dsg-modern.css`.
+- Menambahkan script helper global `assets/js/dsg-modern.js` untuk wrapping tabel responsive dan tombol tutorial.
+- Memoles login page dengan brand card DSG Inventory.
+- Menambahkan reminder admin di dashboard utama.
+- Menambahkan halaman tutorial admin live: `admin_tutorial.php`.
+- Menambahkan dokumentasi tutorial: `docs/ADMIN_TUTORIAL.md`.
+
+Catatan teknis:
+- Pendekatan sengaja **non-invasive** agar logic PHP native lama tidak rusak.
+- Belum menggunakan build tool React/Vite agar tetap kompatibel dengan shared hosting FTP.
+- React/Tailwind bisa dipakai di fase berikutnya untuk modul baru atau redesign dashboard penuh.

@@ -26,6 +26,7 @@ $user = $user->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pengguna</title>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -49,5 +50,6 @@ $user = $user->fetch(PDO::FETCH_ASSOC);
         <button type="submit" class="btn btn-primary">Update Pengguna</button>
     </form>
 </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

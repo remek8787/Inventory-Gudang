@@ -19,6 +19,7 @@
             margin-top: 150px;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="welcome-container">
@@ -26,5 +27,6 @@
         <p>You can manage users here.</p>
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

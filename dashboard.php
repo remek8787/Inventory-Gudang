@@ -49,6 +49,7 @@ $role = $_SESSION['role']; // Pastikan role disimpan di session saat login
             background-color: #c82333;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
@@ -75,5 +76,6 @@ $role = $_SESSION['role']; // Pastikan role disimpan di session saat login
         
         <a href="logout.php">Logout</a>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

@@ -105,6 +105,7 @@ $stmt->execute($params);
             padding: 20px;
         }
     </style>
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <!-- Side Panel -->
@@ -187,5 +188,6 @@ $stmt->execute($params);
             </div>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

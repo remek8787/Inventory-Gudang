@@ -48,6 +48,7 @@ if (!empty($bulan) && !empty($tahun)) {
 <head>
     <title>Daftar Barang Keluar</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -87,5 +88,6 @@ if (!empty($bulan) && !empty($tahun)) {
             </table>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

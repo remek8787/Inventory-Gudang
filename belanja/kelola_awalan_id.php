@@ -48,6 +48,7 @@ if (isset($_POST['hapus_awalan'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Awalan ID Barang</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 
@@ -112,5 +113,6 @@ if (isset($_POST['hapus_awalan'])) {
     </form>
 </div>
 
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>

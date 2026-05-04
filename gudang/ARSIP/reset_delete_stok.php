@@ -40,6 +40,7 @@ $stmt = $pdo->query("SELECT * FROM barang_masuk_gudang");
 <head>
     <title>Daftar Barang Masuk Gudang</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -83,5 +84,6 @@ $stmt = $pdo->query("SELECT * FROM barang_masuk_gudang");
             </table>
         </div>
     </div>
+<script src="/assets/js/dsg-modern.js"></script>
 </body>
 </html>
