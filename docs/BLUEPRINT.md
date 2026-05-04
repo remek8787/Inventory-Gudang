@@ -315,3 +315,23 @@ Perbaikan:
 Verifikasi:
 - `https://inventory.dentasejahteragroup.my.id/qr-code-ganrate/` HTTP 200.
 - Dashboard tetap redirect login jika belum login, dan link QR tersedia setelah login.
+
+
+## Premium Dashboard Redesign 2026-05-05
+
+Permintaan:
+- User mengizinkan UI/UX dashboard utama `/` diubah total agar sebagus dan semoderen mungkin, ringan, berkualitas, dan branding kuat.
+
+Perbaikan:
+- Rewrite `index.php` menjadi `DSG Inventory Control Center` premium lightweight dashboard.
+- Menambahkan hero branding `DENTA SEJAHTERA GROUP`.
+- Menambahkan build `v1.2.7-premium · Build 2026.05.05.0330`.
+- Menampilkan statistik real read-only: total input, waiting QC, selesai QC, stok gudang, keluar bulan ini.
+- Menambahkan workflow cards: Receiving, Quality Control, Gudang, Ship Out, Riwayat, QR Generator.
+- Sidebar disusun ulang dengan ikon dan akses sesuai role.
+- Tidak memakai React/build tool agar tetap ringan dan aman untuk shared hosting FTP.
+- Menambahkan CSS premium dashboard pada `assets/css/dsg-modern.css`.
+
+Verifikasi:
+- `index.php?v=premium127` merespon HTTP 200/redirect login jika belum login.
+- CSS premium live HTTP 200.
