@@ -112,3 +112,8 @@ body.dsg-dark .dsg-build-badge{background:#e5eefb;color:#0f172a}
 .dsg-scroll-hint{font-size:.82rem;color:var(--dsg-muted);font-weight:700;margin:8px 0 10px;display:block}
 @media(max-width:900px){.dsg-table-card{border-radius:18px}.dsg-table-card:before{content:'Geser tabel ke kanan/kiri →';display:block;padding:10px 14px;background:#ecfeff;color:#0f766e;font-weight:800;border-bottom:1px solid #bae6fd}}
 body.dsg-dark .dsg-table-card:before{background:#10243a;color:#7dd3fc;border-color:#22304a}
+
+
+.dsg-loading-card{max-width:560px;margin:120px auto!important;background:#fff;border:1px solid var(--dsg-border);border-radius:28px;padding:36px;box-shadow:var(--dsg-shadow)}
+.dsg-loading-spinner{width:58px;height:58px;border-radius:999px;border:6px solid #dbeafe;border-top-color:#0f766e;margin:0 auto 22px;animation:dsgSpin 1s linear infinite}@keyframes dsgSpin{to{transform:rotate(360deg)}}
+body.dsg-dark .dsg-loading-card{background:#0f172a;border-color:#22304a}

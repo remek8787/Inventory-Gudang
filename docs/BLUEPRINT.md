@@ -276,3 +276,22 @@ Perbaikan:
 Verifikasi:
 - CSS live dapat diakses dengan cache-busting `assets/css/dsg-modern.css?v=scrollfix`.
 - Halaman `gudang/riwayat_pengeluaran.php?v=scrollfix` HTTP 200.
+
+
+## Branding / Build Version Refresh 2026-05-05
+
+Permintaan:
+- Perbarui teks lama `Welcome to the Dentanet V1.2 Warehouse Application` dan `(Rev 16-12-2024) - Latest Revision`.
+- Perbarui halaman loading awal dan login page.
+
+Perbaikan:
+- Dashboard awal sekarang menampilkan `DSG Inventory Control Center`.
+- Build version dinaikkan ke `v1.2.6-modern · Build 2026.05.05.0235`.
+- Login page menjadi `DSG Inventory Login` dengan deskripsi Receiving/QC/Gudang/Ship Out.
+- Loading/admin dashboard menjadi halaman loading yang lebih modern dengan spinner.
+- Menambahkan CSS `.dsg-loading-card` dan `.dsg-loading-spinner`.
+
+Verifikasi:
+- `login.php?v=126` HTTP 200.
+- `admin_dashboard.php?v=126` HTTP 200.
+- CSS live HTTP 200.
