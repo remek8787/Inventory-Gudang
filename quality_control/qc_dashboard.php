@@ -30,7 +30,7 @@ $stmt = $pdo->query($query);
         <h2 class="text-2xl font-bold mb-6 text-center">Dashboard</h2>
         <ul>
             <li class="mb-4">
-                <a href="/GUDANGV1/index.php" class="flex items-center hover:bg-gray-600 p-2 rounded">
+                <a href="/index.php" class="flex items-center hover:bg-gray-600 p-2 rounded">
                     <i class="fas fa-home mr-3"></i> BERANDA
                 </a>
             </li>
@@ -50,7 +50,7 @@ $stmt = $pdo->query($query);
                 </a>
             </li>
             <li class="mb-4">
-                <a href="/GUDANGV1/quality_control/list_selesai_qc.php" class="flex items-center hover:bg-gray-600 p-2 rounded">
+                <a href="/quality_control/list_selesai_qc.php" class="flex items-center hover:bg-gray-600 p-2 rounded">
                     <i class="fas fa-box mr-3"></i> Barang Siap Ke Gudang
                 </a>
             </li> 
@@ -67,7 +67,7 @@ $stmt = $pdo->query($query);
         <!-- Header -->
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-bold">Daftar Barang Menunggu QC</h2>
-            <a href="/GUDANGV1/index.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Kembali</a>
+            <a href="/index.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Kembali</a>
         </div>
         
         <!-- Search Form -->

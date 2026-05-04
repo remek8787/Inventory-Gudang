@@ -111,11 +111,11 @@ $stmt->execute($params);
     <!-- Side Panel -->
     <div id="sidebar">
         <h4 class="text-center">Dhasboard Gudang</h4>
-        <!-- <a href="/GUDANGV1/quality_control/list_selesai_qc.php">Back To Selesai QC</a> -->
-        <a href="/GUDANGV1/index.php">Back To Storage</a>
-		<a href="/GUDANGV1/gudang/stok_gudang.php">Ship Stock</a>
-        <a href="/GUDANGV1/gudang/barang_keluar.php">Ship Out</a>
-        <a href="/GUDANGV1/gudang/riwayat_pengeluaran.php">Shipment History</a>
+        <!-- <a href="/quality_control/list_selesai_qc.php">Back To Selesai QC</a> -->
+        <a href="/index.php">Back To Storage</a>
+		<a href="/gudang/stok_gudang.php">Ship Stock</a>
+        <a href="/gudang/barang_keluar.php">Ship Out</a>
+        <a href="/gudang/riwayat_pengeluaran.php">Shipment History</a>
     </div>
 
     <!-- Konten Utama -->

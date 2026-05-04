@@ -80,8 +80,8 @@ if (isset($_GET['search']) || isset($_GET['tanggal_mulai']) || isset($_GET['tang
 </head>
 <body>
 <div class="sidebar">
-    <a href="/GUDANGV1/quality_control/qc_dashboard.php">BACK DHASBOARD QC</a>
-    <a href="/GUDANGV1/quality_control/qc_lolos.php">Dashboard QC Lolos</a>
+    <a href="/quality_control/qc_dashboard.php">BACK DHASBOARD QC</a>
+    <a href="/quality_control/qc_lolos.php">Dashboard QC Lolos</a>
     <a href="/logout.php">Logout</a>
 </div>
 
@@ -90,7 +90,7 @@ if (isset($_GET['search']) || isset($_GET['tanggal_mulai']) || isset($_GET['tang
         <div class="d-flex justify-content-between mb-4">
             <h2 class="text-center">Daftar Barang Reject</h2>
             <!-- Tombol Kembali ke Dashboard -->
-            <a href="/GUDANGV1/index.php" class="btn btn-secondary">Kembali</a>
+            <a href="/index.php" class="btn btn-secondary">Kembali</a>
         </div>
 
         <!-- Form Pencarian dan Filter Tanggal -->

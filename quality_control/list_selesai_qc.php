@@ -78,8 +78,8 @@ if (isset($_GET['export'])) {
 <body>
 <div class="sidebar">
         <h4 class="text-center text-white">Menu List Barang Selesai QC</h4>
-        <a href="/GUDANGV1/quality_control/qc_dashboard.php">Back Dashboard QC</a>
-        <a href="/GUDANGV1/gudang/barang_masuk_gudang.php">Ke Dhasboard Gudang</a>
+        <a href="/quality_control/qc_dashboard.php">Back Dashboard QC</a>
+        <a href="/gudang/barang_masuk_gudang.php">Ke Dhasboard Gudang</a>
     </div>
 
 

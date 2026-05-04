@@ -61,18 +61,18 @@ $stmt = $pdo->query("SELECT * FROM barang_masuk_gudang");
                 <h3 class="mb-4 text-lg font-semibold">Navigation</h3>
                 <ul class="space-y-2">
                 <li>
-                <a href="/GUDANGV1/gudang/barang_masuk_gudang.php" class="text-blue-500 hover:text-blue-600">
+                <a href="/gudang/barang_masuk_gudang.php" class="text-blue-500 hover:text-blue-600">
                     <i class="fas fa-arrow-left"></i> Kembali ke Dashboard
                 </a>
             </li>
             <li>
-                <a href="/GUDANGV1/gudang/riwayat_pengeluaran.php" class="text-blue-500 hover:text-blue-600">
+                <a href="/gudang/riwayat_pengeluaran.php" class="text-blue-500 hover:text-blue-600">
                     <i class="fas fa-history"></i> Riwayat Pengeluaran Barang
                 </a>
             </li>
             <!-- Tambahkan link baru di sini -->
             <li>
-                <a href="/GUDANGV1/gudang/stok_gudang.php" class="text-blue-500 hover:text-blue-600">
+                <a href="/gudang/stok_gudang.php" class="text-blue-500 hover:text-blue-600">
                     <i class="fas fa-boxes"></i> Cek Stok Gudang
                 </a>
             </li>

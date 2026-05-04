@@ -32,17 +32,17 @@ $stmt = $pdo->query($query);
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/barang_masuk_gudang.php">
+                            <a class="nav-link" href="/gudang/barang_masuk_gudang.php">
                                 <i class="fas fa-home"></i> Kembali ke Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/barang_keluar.php">
+                            <a class="nav-link" href="/gudang/barang_keluar.php">
                                 <i class="fas fa-dolly-flatbed"></i> Keluarkan Barang
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/riwayat_pengeluaran.php">
+                            <a class="nav-link" href="/gudang/riwayat_pengeluaran.php">
                                 <i class="fas fa-history"></i> Riwayat Pengeluaran
                             </a>
                         </li>

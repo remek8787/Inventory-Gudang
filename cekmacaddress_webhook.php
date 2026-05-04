@@ -7,7 +7,7 @@
  *   carimacaddress-C0-51-5C-D2-D5-51
  *
  * Sumber data (publik, tanpa login):
- *   /GUDANGV1/gudang/barang_masuk_gudang.php?id_barang=&nama_barang=&mac_address=<MAC>&bulan=&tahun=&ekspedisi=
+ *   /gudang/barang_masuk_gudang.php?id_barang=&nama_barang=&mac_address=<MAC>&bulan=&tahun=&ekspedisi=
  */
 
 date_default_timezone_set('Asia/Jakarta');
@@ -17,7 +17,7 @@ $WAHA_BASE_URL = 'https://waha-anantasatr-9be.zetpod.id';
 $WAHA_API_KEY  = 'hf9UwoFQLqhMfrK57k0fmnSx1NC2zvdy';
 $SESSION       = 'default';
 
-$URL_GUDANG   = 'http://mrtg.dentanet.id:1480/GUDANGV1/gudang/barang_masuk_gudang.php';
+$URL_GUDANG   = 'http://mrtg.dentanet.id:1480/gudang/barang_masuk_gudang.php';
 
 $LOG_FILE = __DIR__ . '/webhook_cekmacaddress.log';
 $REPLY_NOT_FOUND = true;

@@ -107,17 +107,17 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/barang_masuk_gudang.php">
+                            <a class="nav-link" href="/gudang/barang_masuk_gudang.php">
                                 Back To Dhasboard Gudang
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/barang_keluar.php">
+                            <a class="nav-link" href="/gudang/barang_keluar.php">
                                 Keluarkan Barang
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GUDANGV1/gudang/stok_gudang.php">
+                            <a class="nav-link" href="/gudang/stok_gudang.php">
                                 Stok Gudang
                             </a>
                         </li>

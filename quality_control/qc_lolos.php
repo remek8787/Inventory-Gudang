@@ -76,11 +76,11 @@ $total_pages = ceil($total_rows / $records_per_page);
     <!-- SIDE PANEL -->
     <div class="side-panel">
         <h4>Menu</h4>
-        <a href="/GUDANGV1/quality_control/qc_dashboard.php">Dashboard QC</a>
-      <!--  <a href="/GUDANGV1/gudang/index_gudang.html">Dashboard Gudang</a>
-        <a href="/GUDANGV1/gudang/barang_keluar.php">Barang Keluar</a>
-        <a href="/GUDANGV1/gudang/riwayat_pengeluaran.php">Riwayat Pengeluaran</a>
-        <a href="/GUDANGV1/gudang/stok_gudang.php">Stok Gudang</a> -->
+        <a href="/quality_control/qc_dashboard.php">Dashboard QC</a>
+      <!--  <a href="/gudang/index_gudang.html">Dashboard Gudang</a>
+        <a href="/gudang/barang_keluar.php">Barang Keluar</a>
+        <a href="/gudang/riwayat_pengeluaran.php">Riwayat Pengeluaran</a>
+        <a href="/gudang/stok_gudang.php">Stok Gudang</a> -->
         <a href="#">Logout</a>
     </div>
 

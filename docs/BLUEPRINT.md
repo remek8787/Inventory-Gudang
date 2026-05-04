@@ -155,3 +155,29 @@ Verifikasi live:
 - `gudang/riwayat_pengeluaran.php?ajax=1...` return JSON `ok: true`.
 - `gudang/barang_yang_sudah_keluar.php?ajax=1...` return JSON `ok: true`.
 - `inventory_metrics.php` aman redirect ke login jika belum login.
+
+
+## 404 Path Fix 2026-05-04
+
+Masalah:
+- Beberapa link legacy masih hardcoded ke `/GUDANGV1/...` dari masa XAMPP.
+- Di hosting baru aplikasi berjalan di root subdomain, sehingga link tersebut menghasilkan 404.
+
+Perbaikan:
+- Mengganti hardcoded `/GUDANGV1/` menjadi `/` pada file aktif utama:
+  - `belanja/tambah_barang.php`
+  - `gudang/barang_keluar.php`
+  - `gudang/barang_masuk_gudang.php`
+  - `gudang/riwayat_pengeluaran.php`
+  - `gudang/stok_gudang.php`
+  - `quality_control/list_selesai_qc.php`
+  - `quality_control/qc_dashboard.php`
+  - `quality_control/qc_lolos.php`
+  - `quality_control/qc_retur.php`
+  - `cekmacaddress_webhook.php`
+
+Verifikasi live:
+- `belanja/tambah_barang.php` HTTP 200.
+- `gudang/barang_masuk_gudang.php` HTTP 200.
+- `quality_control/qc_dashboard.php` HTTP 200.
+- `gudang/stok_gudang.php` HTTP 200.

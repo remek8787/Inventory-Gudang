@@ -227,9 +227,9 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
 
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="/GUDANGV1/index.php" class="text-white text-lg font-semibold"></a>
+        <a href="/index.php" class="text-white text-lg font-semibold"></a>
         <div>
-            <a href="/GUDANGV1/index.php" class="text-white px-3 py-2 rounded-md text-sm font-medium">Kembali ke Dashboard</a>
+            <a href="/index.php" class="text-white px-3 py-2 rounded-md text-sm font-medium">Kembali ke Dashboard</a>
         </div>
     </div>
 </nav>
@@ -353,16 +353,16 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
         <button type="submit" class="mt-4 w-full py-2 px-4 bg-green-600 text-white font-semibold rounded-md">Cari</button>
          <!-- Tambahkan Tombol Kelola Awalan ID dan Tambah Satuan -->
     <div class="flex justify-end space-x-4 mb-4">
-        <a href="/GUDANGV1/belanja/kelola_awalan_id.php" 
+        <a href="/belanja/kelola_awalan_id.php" 
            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
            Kelola Awalan ID
         </a>
-        <a href="/GUDANGV1/belanja/tambah_satuan.php" 
+        <a href="/belanja/tambah_satuan.php" 
            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
            Tambah Satuan Barang
         </a>
         </a>
-        <a href="/GUDANGV1/belanja/manage_tipe_barang.php" 
+        <a href="/belanja/manage_tipe_barang.php" 
            class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
            Tambah Type Barang
         </a>
