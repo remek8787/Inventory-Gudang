@@ -243,3 +243,22 @@ Verifikasi:
 - `gudang/barang_keluar.php?ajax=1&search=MODEM` JSON ok:true.
 - `quality_control/list_selesai_qc.php?ajax=1&id_barang=MODEM` JSON ok:true.
 - `gudang/barang_masuk_gudang.php?ajax=1...` JSON ok:true.
+
+
+## Fix Riwayat Pengeluaran Live Search 2026-05-05
+
+Masalah:
+- User melaporkan `gudang/riwayat_pengeluaran.php` belum terlihat punya pagination dan live search.
+
+Perbaikan:
+- Rewrite halaman ke layout professional DSG yang konsisten.
+- Menambahkan pagination 25 row per halaman.
+- Menambahkan live search AJAX via `assets/js/dsg-ajax-search.js`.
+- Search global mencakup ID, nama barang, tipe, MAC, teknisi, petugas admin, keterangan, dan penggunaan.
+- Query menggunakan prepared statement PDO.
+- Export CSV/XML mengikuti filter.
+- Menggunakan `COALESCE` agar riwayat tetap menampilkan data walau item sudah tidak ada di `barang_masuk_gudang`.
+
+Verifikasi:
+- `gudang/riwayat_pengeluaran.php` HTTP 200.
+- `gudang/riwayat_pengeluaran.php?ajax=1&search=MODEM&start_date=&end_date=` return JSON `ok:true`.
