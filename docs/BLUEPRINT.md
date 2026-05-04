@@ -262,3 +262,17 @@ Perbaikan:
 Verifikasi:
 - `gudang/riwayat_pengeluaran.php` HTTP 200.
 - `gudang/riwayat_pengeluaran.php?ajax=1&search=MODEM&start_date=&end_date=` return JSON `ok:true`.
+
+
+## Horizontal Table Scroll Fix 2026-05-05
+
+Masalah:
+- Pada layar kecil/HP, tabel lebar tidak bisa digeser kanan-kiri karena wrapper card memakai overflow yang menahan scroll.
+
+Perbaikan:
+- Menambahkan CSS global untuk `.dsg-table-card.table-responsive`, `.table-responsive`, dan table children agar `overflow-x:auto`, `-webkit-overflow-scrolling:touch`, dan `min-width` aktif.
+- Menambahkan hint mobile "Geser tabel ke kanan/kiri →".
+
+Verifikasi:
+- CSS live dapat diakses dengan cache-busting `assets/css/dsg-modern.css?v=scrollfix`.
+- Halaman `gudang/riwayat_pengeluaran.php?v=scrollfix` HTTP 200.

@@ -93,3 +93,22 @@ body.dsg-dark .table td,body.dsg-dark .table th{border-color:#22304a!important}b
 .dsg-build-badge,.dsg-dashboard-build{display:inline-block;background:#0f172a;color:#fff;border-radius:999px;padding:7px 12px;font-size:.78rem;font-weight:900;letter-spacing:.02em;margin:0 0 14px;box-shadow:0 10px 24px rgba(15,23,42,.18)}
 .dsg-dashboard-build{margin-top:10px;background:linear-gradient(135deg,#0f766e,#0ea5e9)}
 body.dsg-dark .dsg-build-badge{background:#e5eefb;color:#0f172a}
+/* Fix horizontal table scrolling on mobile/small screens */
+.dsg-table-card.table-responsive,
+.dsg-table-card .table-responsive,
+.table-responsive{
+  overflow-x:auto!important;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-x pan-y;
+}
+.dsg-table-card.table-responsive table,
+.dsg-table-card .table-responsive table,
+.table-responsive table{
+  min-width:1180px;
+  width:max-content;
+  max-width:none;
+}
+.dsg-scroll-hint{font-size:.82rem;color:var(--dsg-muted);font-weight:700;margin:8px 0 10px;display:block}
+@media(max-width:900px){.dsg-table-card{border-radius:18px}.dsg-table-card:before{content:'Geser tabel ke kanan/kiri →';display:block;padding:10px 14px;background:#ecfeff;color:#0f766e;font-weight:800;border-bottom:1px solid #bae6fd}}
+body.dsg-dark .dsg-table-card:before{background:#10243a;color:#7dd3fc;border-color:#22304a}
