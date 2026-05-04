@@ -9,7 +9,7 @@
 </head>
 <body class="dsg-login-body">
     <div class="container d-flex justify-content-center align-items-center" style="min-height:100vh;">
-        <div class="dsg-login-card"><div class="dsg-brand-badge">📦 DSG Inventory</div><h3 class="mb-2">Masuk Admin</h3><p class="text-muted mb-4">Kelola barang, QC, dan gudang dalam satu panel.</p><form action="login_process.php" method="POST">
+        <div class="dsg-login-card"><div class="dsg-brand-badge">📦 DSG Inventory</div><div class="dsg-build-badge">v1.2.5-modern · Build 2026.05.04.2304</div><h3 class="mb-2">Masuk Admin</h3><p class="text-muted mb-4">Kelola barang, QC, dan gudang dalam satu panel.</p><form action="login_process.php" method="POST">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control" id="username" name="username" required>
