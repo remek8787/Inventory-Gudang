@@ -120,6 +120,7 @@ $role = $_SESSION['role'];
         <div class="dsg-kpi-grid">
             <div class="dsg-kpi"><small>Statistik</small><br><b>Live</b><p class="mb-0 text-muted">Pantau stok, waiting QC, dan barang keluar.</p><a href="inventory_metrics.php" class="btn btn-primary btn-sm mt-3">Buka Statistik</a></div>
             <div class="dsg-kpi"><small>Tutorial</small><br><b>Admin</b><p class="mb-0 text-muted">Panduan alur receiving, QC, gudang, dan pengeluaran.</p><a href="admin_tutorial.php" class="btn btn-success btn-sm mt-3">Buka Tutorial</a></div>
+            <div class="dsg-kpi"><small>QR Code</small><br><b>Generator</b><p class="mb-0 text-muted">Buat PDF QR label untuk ID barang dan stok inventory.</p><a href="/qr-code-ganrate/" class="btn btn-warning btn-sm mt-3">Buka QR Generator</a></div>
         </div>
     <h2 class="text-center dashboard-header">
     DSG Inventory Control Center

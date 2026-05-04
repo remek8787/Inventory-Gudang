@@ -295,3 +295,23 @@ Verifikasi:
 - `login.php?v=126` HTTP 200.
 - `admin_dashboard.php?v=126` HTTP 200.
 - CSS live HTTP 200.
+
+
+## QR Code Generator Integration 2026-05-05
+
+Permintaan:
+- User mengupload ZIP terbaru `auto_qr_generator.zip` ke hosting.
+- Integrasikan sebagai folder sendiri, contoh `qr-code-ganrate`, dan buat akses dari dashboard.
+
+Perbaikan:
+- Download ZIP terbaru dari FTP root: `auto_qr_generator.zip`.
+- Ekstrak dan deploy aplikasi generator QR ke `/qr-code-ganrate/`.
+- Aplikasi QR dirapikan dengan layout DSG professional.
+- Output PDF disimpan di `/qr-code-ganrate/generated/`.
+- Validasi input: prefix hanya huruf/angka/underscore/strip, maksimal 12 karakter; count 1-500.
+- Dashboard awal `index.php` ditambah kartu/link `QR Code Generator`.
+- Source QR generator juga disimpan di repo: `tools/qr-code-ganrate/`.
+
+Verifikasi:
+- `https://inventory.dentasejahteragroup.my.id/qr-code-ganrate/` HTTP 200.
+- Dashboard tetap redirect login jika belum login, dan link QR tersedia setelah login.
