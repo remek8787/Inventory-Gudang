@@ -222,3 +222,24 @@ Perbaikan:
 Verifikasi:
 - URL utama `gudang/barang_masuk_gudang.php?...` HTTP 200.
 - Endpoint AJAX `gudang/barang_masuk_gudang.php?ajax=1...` return JSON `ok: true` dan memuat tombol Delete / Balik QC.
+
+
+## Professional Panel/UI Alignment 2026-05-04
+
+Permintaan:
+- Rapikan panel.
+- Samakan UI `gudang/barang_keluar.php`, `quality_control/list_selesai_qc.php`, dan `gudang/barang_masuk_gudang.php` agar lebih profesional, menarik, dan konsisten.
+- Tambahkan pagination/AJAX search bila diperlukan seperti `gudang/riwayat_pengeluaran.php`.
+
+Perbaikan:
+- Menambahkan CSS reusable layout: `dsg-app`, `dsg-pro-sidebar`, `dsg-pro-main`, `dsg-page-head`, `dsg-panel`, `dsg-table-card`, dll.
+- Rewrite `gudang/barang_keluar.php` ke layout profesional dengan sidebar DSG, panel form, search AJAX barang tersedia, dan tabel pilihan barang.
+- Menyamakan panel/sidebar `quality_control/list_selesai_qc.php` dengan layout DSG professional.
+- Menyamakan panel/sidebar `gudang/barang_masuk_gudang.php` dengan layout DSG professional.
+- `barang_keluar.php` sekarang menggunakan search AJAX read-only untuk memilih barang tersedia tanpa dropdown berat.
+
+Verifikasi:
+- `gudang/barang_keluar.php` HTTP 200.
+- `gudang/barang_keluar.php?ajax=1&search=MODEM` JSON ok:true.
+- `quality_control/list_selesai_qc.php?ajax=1&id_barang=MODEM` JSON ok:true.
+- `gudang/barang_masuk_gudang.php?ajax=1...` JSON ok:true.

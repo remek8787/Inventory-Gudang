@@ -130,27 +130,27 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
-<body>
-<div class="d-flex">
-    <div id="sidebar" class="sidebar" style="width:250px;">
-        <h4 class="text-center text-white px-3">Dashboard Gudang</h4>
-        <a href="/quality_control/list_selesai_qc.php">Back To Selesai QC</a>
-        <a href="/index.php">Back To Storage</a>
-        <a href="/gudang/stok_gudang.php">Ship Stock</a>
+<body class="dsg-app">
+<div class="dsg-app">
+    <aside class="dsg-pro-sidebar">
+        <div class="brand">📦 DSG Inventory</div>
+        <a href="/quality_control/list_selesai_qc.php">Selesai QC</a>
+        <a href="/index.php">Dashboard Utama</a>
+        <a href="/gudang/stok_gudang.php">Stok Gudang</a>
         <a href="/gudang/barang_keluar.php">Ship Out</a>
-        <a href="/gudang/riwayat_pengeluaran.php">Shipment History</a>
-    </div>
+        <a href="/gudang/riwayat_pengeluaran.php">Riwayat Pengeluaran</a>
+    </aside>
 
-    <main class="content">
+    <main class="dsg-pro-main">
         <div class="dsg-shell-note"><strong>Daftar Barang Masuk Gudang</strong><br>Halaman ini sudah dipaginasi dan search AJAX. Tombol Delete berarti barang dikembalikan ke list Selesai QC.</div>
-        <h2 class="text-center page-title mb-2">Daftar Barang Masuk Gudang</h2>
+        <div class="dsg-page-head"><div><h1>Daftar Barang Masuk Gudang</h1><p class="dsg-page-subtitle">Data finish good yang sudah masuk gudang dan siap dikeluarkan.</p></div></div>
         <div id="barang-masuk-counter" class="text-center text-muted mb-4">Menampilkan <?= (int)$totalRows ?> data barang gudang</div>
 
         <?php if ($message): ?>
             <div class="alert alert-info"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
 
-        <form method="GET" class="form-inline mb-3 dsg-ajax-search" data-target="#barang-masuk-body" data-counter="#barang-masuk-counter">
+        <section class="dsg-panel"><form method="GET" class="form-inline mb-0 dsg-ajax-search" data-target="#barang-masuk-body" data-counter="#barang-masuk-counter">
             <input type="text" name="id_barang" placeholder="ID Barang" class="form-control mr-2 mb-2" value="<?= htmlspecialchars($search_id) ?>">
             <input type="text" name="nama_barang" placeholder="Nama Barang" class="form-control mr-2 mb-2" value="<?= htmlspecialchars($search_nama) ?>">
             <input type="text" name="mac_address" placeholder="MAC Address" class="form-control mr-2 mb-2" value="<?= htmlspecialchars($search_mac) ?>">
@@ -163,9 +163,9 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
             <input type="number" name="tahun" placeholder="Tahun" class="form-control mr-2 mb-2" value="<?= htmlspecialchars($search_tahun) ?>">
             <input type="text" name="ekspedisi" placeholder="Ekspedisi" class="form-control mr-2 mb-2" value="<?= htmlspecialchars($search_ekspedisi) ?>">
             <button type="submit" class="btn btn-primary mb-2">Filter</button>
-        </form>
+        </form></section>
 
-        <div class="table-responsive">
+        <div class="dsg-table-card table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                     <tr>

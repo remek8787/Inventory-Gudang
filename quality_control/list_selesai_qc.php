@@ -141,32 +141,32 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/dsg-modern.css" rel="stylesheet">
 </head>
-<body>
-<div class="d-flex">
-    <div class="sidebar" style="width:240px;">
-        <h4 class="text-center text-white px-3">Selesai QC</h4>
-        <a href="/quality_control/qc_dashboard.php">Back Dashboard QC</a>
-        <a href="/gudang/barang_masuk_gudang.php">Ke Dashboard Gudang</a>
+<body class="dsg-app">
+<div class="dsg-app">
+    <aside class="dsg-pro-sidebar">
+        <div class="brand">📦 DSG Inventory</div>
+        <a href="/quality_control/qc_dashboard.php">Dashboard QC</a>
+        <a href="/gudang/barang_masuk_gudang.php">Barang Masuk Gudang</a>
         <a href="/index.php">Dashboard Utama</a>
-    </div>
+    </aside>
 
-    <main class="content" style="margin-left:0;">
+    <main class="dsg-pro-main" style="margin-left:0;">
         <div class="dsg-shell-note"><strong>List Barang Selesai QC</strong><br>Halaman ini sudah dipaginasi agar tidak berat. Gunakan search untuk mencari ID, nama, tipe, MAC, toko, ekspedisi, petugas order, atau petugas QC.</div>
 
-        <h2 class="mb-2 text-center page-title">List Barang Selesai QC</h2>
+        <div class="dsg-page-head"><div><h1>List Barang Selesai QC</h1><p class="dsg-page-subtitle">Barang yang sudah lolos QC dan siap dikirim ke gudang.</p></div></div>
         <div id="selesai-qc-counter" class="text-center text-muted mb-4">Menampilkan <?= (int)$totalRows ?> data selesai QC</div>
 
         <?php if ($message): ?>
             <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
 
-        <form method="GET" action="list_selesai_qc.php" class="form-inline mb-4 dsg-ajax-search" data-target="#selesai-qc-body" data-counter="#selesai-qc-counter">
+        <section class="dsg-panel"><form method="GET" action="list_selesai_qc.php" class="form-inline mb-0 dsg-ajax-search" data-target="#selesai-qc-body" data-counter="#selesai-qc-counter">
             <input type="text" class="form-control mr-2 mb-2" name="id_barang" placeholder="Cari ID/Nama/Tipe/MAC/Petugas" value="<?= htmlspecialchars($search) ?>">
             <button type="submit" class="btn btn-primary mb-2">Cari</button>
             <a href="list_selesai_qc.php?export=true&id_barang=<?= urlencode($search) ?>" class="btn btn-success ml-2 mb-2">Export CSV</a>
-        </form>
+        </form></section>
 
-        <div class="table-responsive">
+        <div class="dsg-table-card table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
