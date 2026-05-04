@@ -107,7 +107,7 @@ function renderRows(array $data): string {
                         <input type="hidden" name="tanggal_datang" value="<?= htmlspecialchars($row['tanggal_datang'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
                         <input type="hidden" name="tanggal_qc" value="<?= htmlspecialchars($row['tanggal_qc'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
                         <input type="hidden" name="keterangan" value="<?= htmlspecialchars($row['keterangan'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
-                        <button type="submit" class="btn btn-success btn-sm">Kirim ke Gudang</button>
+                        <button type="submit" name="send_to_gudang" class="btn btn-success btn-sm">Kirim ke Gudang</button>
                     </form>
                 </td>
             </tr>

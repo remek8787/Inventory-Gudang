@@ -203,3 +203,22 @@ Perbaikan:
 Verifikasi:
 - URL utama HTTP 200.
 - `quality_control/list_selesai_qc.php?ajax=1&id_barang=MODEM` return JSON `ok: true`.
+
+
+## Fix Barang Masuk Gudang 2026-05-04
+
+Permintaan:
+- Pada `gudang/barang_masuk_gudang.php`, tambahkan tombol Delete.
+- Jika Delete ditekan, barang harus kembali lagi ke `quality_control/list_selesai_qc.php`.
+- Tambahkan pagination, AJAX search, dan optimasi load.
+
+Perbaikan:
+- Rewrite `gudang/barang_masuk_gudang.php` menjadi paginated 25 row per halaman.
+- Search AJAX multi-field: ID, nama barang, MAC, bulan, tahun, ekspedisi.
+- Tombol `Delete / Balik QC` memakai POST `return_to_qc`.
+- Alur delete: update `items.qc_status = 'Selesai QC'`, lalu hapus row dari `barang_masuk_gudang`; ini membuat barang muncul lagi di `quality_control/list_selesai_qc.php`.
+- Tombol `Kirim ke Gudang` dari `list_selesai_qc.php` disesuaikan agar mengirim `send_to_gudang`.
+
+Verifikasi:
+- URL utama `gudang/barang_masuk_gudang.php?...` HTTP 200.
+- Endpoint AJAX `gudang/barang_masuk_gudang.php?ajax=1...` return JSON `ok: true` dan memuat tombol Delete / Balik QC.
