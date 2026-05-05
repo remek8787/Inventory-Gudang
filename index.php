@@ -59,7 +59,7 @@ $role = $_SESSION['role'];
             margin-bottom: 30px;
         }
     </style>
-<link href="/assets/css/dsg-modern.css" rel="stylesheet">
+<link href="/assets/css/dsg-modern.css?v=20260505-toolbar2" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
@@ -116,10 +116,10 @@ $role = $_SESSION['role'];
 
     <!-- Main Content -->
     <div class="content">
-<div class="dsg-shell-note"><strong>Reminder Admin:</strong> input barang → QC → finish good → barang keluar. Data rapi = stok aman dan mudah dilacak.<br><span class="dsg-dashboard-build">Build: v1.2.6-modern · Build 2026.05.05.0235</span></div>
+<div class="dsg-shell-note"><strong>Reminder:</strong> input barang → QC → finish good → barang keluar. Data rapi = stok aman dan mudah dilacak.<br><span class="dsg-dashboard-build">Build: v1.2.6-modern · Build 2026.05.05.0235</span></div>
         <div class="dsg-kpi-grid">
             <div class="dsg-kpi"><small>Statistik</small><br><b>Live</b><p class="mb-0 text-muted">Pantau stok, waiting QC, dan barang keluar.</p><a href="inventory_metrics.php" class="btn btn-primary btn-sm mt-3">Buka Statistik</a></div>
-            <div class="dsg-kpi"><small>Tutorial</small><br><b>Admin</b><p class="mb-0 text-muted">Panduan alur receiving, QC, gudang, dan pengeluaran.</p><a href="admin_tutorial.php" class="btn btn-success btn-sm mt-3">Buka Tutorial</a></div>
+            <div class="dsg-kpi"><small>Panduan</small><br><b>Tutorial</b><p class="mb-0 text-muted">Panduan alur receiving, QC, gudang, dan pengeluaran.</p><a href="admin_tutorial.php" class="btn btn-success btn-sm mt-3">Buka Tutorial</a></div>
             <div class="dsg-kpi"><small>QR Code</small><br><b>Generator</b><p class="mb-0 text-muted">Buat PDF QR label untuk ID barang dan stok inventory.</p><a href="/qr-code-ganrate/" class="btn btn-warning btn-sm mt-3">Buka QR Generator</a></div>
         </div>
     <h2 class="text-center dashboard-header">
@@ -170,6 +170,6 @@ $role = $_SESSION['role'];
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/assets/js/dsg-modern.js"></script>
+<script src="/assets/js/dsg-modern.js?v=20260505-toolbar2"></script>
 </body>
 </html>

@@ -13,6 +13,8 @@
     if(localStorage.getItem('dsgTheme')==='dark'){document.body.classList.add('dsg-dark');}
     if(localStorage.getItem('dsgSidebar')==='hidden'){document.body.classList.add('dsg-sidebar-hidden');}
 
+    if(document.body.classList.contains('dsg-login-body')){ return; }
+
     if(!document.querySelector('.dsg-top-tools')){
       var bar=document.createElement('div');
       bar.className='dsg-top-tools';
