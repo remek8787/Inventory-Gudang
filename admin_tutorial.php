@@ -3,14 +3,14 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tutorial Admin Inventory DSG</title>
+  <title>Tutorial Inventory DSG</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/css/dsg-modern.css" rel="stylesheet">
 </head>
 <body>
 <div class="container py-5">
   <div class="dsg-shell-note"><strong>DSG Inventory Guide</strong><br>Halaman pengingat cepat untuk admin agar alur barang tetap rapi dan mudah diaudit.</div>
-  <h1 class="page-title mb-2">Tutorial Admin Inventory</h1>
+  <h1 class="page-title mb-2">Tutorial Inventory</h1>
   <p class="text-muted mb-4">Gunakan checklist ini setiap input barang, QC, stok gudang, dan pengeluaran teknisi.</p>
   <div class="dsg-kpi-grid">
     <div class="dsg-kpi"><small>1. Receiving</small><br><b>Input</b><p class="mb-0 text-muted">Masukkan barang belanja lengkap: nama, tipe, satuan, MAC/serial bila ada, toko, ekspedisi, dan tanggal.</p></div>

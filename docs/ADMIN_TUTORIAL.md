@@ -1,4 +1,4 @@
-# Tutorial Admin — Inventory Gudang DSG
+# Tutorial — Inventory Gudang DSG
 
 ## Alur Utama
 
