@@ -1,37 +1,68 @@
 <?php
 require 'db.php'; // Koneksi ke database
 
+$flash_message = '';
+$flash_type = 'success';
+
+function normalize_barang_id($value) {
+    return strtoupper(preg_replace('/\s+/', '', trim((string)$value)));
+}
+
 // Fungsi Tambah Barang (Menu Belanja)
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['edit'])) {
-    $id_awalan = $_POST['id_awalan']; // Ambil awalan ID dari form
-    $id_barang = $_POST['id_barang'];  // Ambil bagian ID Barang yang diinputkan
-    $qc_status = $_POST['qc_status']; // Status QC dari form
-    $nama_barang = $_POST['nama_barang'];
-    $tipe_barang = $_POST['tipe_barang'];
-    $satuan_barang = $_POST['satuan_barang'];
-    $nama_toko = $_POST['nama_toko'];
-    $ekspedisi = $_POST['ekspedisi'];
-    $belanja_via = $_POST['belanja_via'];
-    $tanggal_order = $_POST['tanggal_order'];
-    $tanggal_datang = $_POST['tanggal_datang'];
-    $siapa_order = $_POST['siapa_order'];
+    $id_awalan = normalize_barang_id($_POST['id_awalan'] ?? ''); // Ambil awalan ID dari form
+    $id_barang = normalize_barang_id($_POST['id_barang'] ?? '');  // Ambil bagian ID Barang yang diinputkan
+    $qc_status = $_POST['qc_status'] ?? 'Menunggu QC'; // Status QC dari form
+    $nama_barang = trim($_POST['nama_barang'] ?? '');
+    $tipe_barang = trim($_POST['tipe_barang'] ?? '');
+    $satuan_barang = trim($_POST['satuan_barang'] ?? '');
+    $nama_toko = trim($_POST['nama_toko'] ?? '');
+    $ekspedisi = trim($_POST['ekspedisi'] ?? '');
+    $belanja_via = trim($_POST['belanja_via'] ?? '');
+    $tanggal_order = trim($_POST['tanggal_order'] ?? '');
+    $tanggal_datang = trim($_POST['tanggal_datang'] ?? '');
+    $siapa_order = trim($_POST['siapa_order'] ?? '');
 
-    // Gabungkan awalan ID dengan ID barang yang diinput
+    // Gabungkan awalan ID dengan ID barang yang diinput, tanpa spasi/tab agar tidak membuat ID ganda tersembunyi
     $id_barang_full = $id_awalan . $id_barang;
 
     if ($satuan_barang == 'Hasbel') {
-        $stok = $_POST['stok'] * 1000; // Konversi 1 Hasbel = 1000 Meter
+        $stok = (float)($_POST['stok'] ?? 0) * 1000; // Konversi 1 Hasbel = 1000 Meter
     } else {
-        $stok = $_POST['stok']; // Satuan lain tetap
+        $stok = $_POST['stok'] ?? 0; // Satuan lain tetap
     }
 
-    // Query untuk menambah barang
-    $stmt = $pdo->prepare("INSERT INTO items (id_barang, nama_barang, tipe_barang, stok, satuan_barang, nama_toko, ekspedisi, belanja_via, tanggal_order, tanggal_datang, siapa_order, qc_status) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    if ($stmt->execute([$id_barang_full, $nama_barang, $tipe_barang, $stok, $satuan_barang, $nama_toko, $ekspedisi, $belanja_via, $tanggal_order, $tanggal_datang, $siapa_order, $qc_status])) {
-        echo "Barang berhasil ditambahkan dan sedang menunggu QC!";
+    if ($id_awalan === '' || $id_barang === '') {
+        $flash_type = 'danger';
+        $flash_message = 'ID barang wajib diisi.';
     } else {
-        echo "Error: Barang gagal ditambahkan.";
+        $cek = $pdo->prepare("SELECT COUNT(*) FROM items WHERE id_barang = ?");
+        $cek->execute([$id_barang_full]);
+
+        if ((int)$cek->fetchColumn() > 0) {
+            $flash_type = 'danger';
+            $flash_message = "ID Barang {$id_barang_full} sudah ada. Silakan cek data yang sudah diinput atau gunakan ID lain.";
+        } else {
+            try {
+                // Query untuk menambah barang
+                $stmt = $pdo->prepare("INSERT INTO items (id_barang, nama_barang, tipe_barang, stok, satuan_barang, nama_toko, ekspedisi, belanja_via, tanggal_order, tanggal_datang, siapa_order, qc_status)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                if ($stmt->execute([$id_barang_full, $nama_barang, $tipe_barang, $stok, $satuan_barang, $nama_toko, $ekspedisi, $belanja_via, $tanggal_order, $tanggal_datang, $siapa_order, $qc_status])) {
+                    $flash_type = 'success';
+                    $flash_message = 'Barang berhasil ditambahkan dan sedang menunggu QC!';
+                } else {
+                    $flash_type = 'danger';
+                    $flash_message = 'Error: Barang gagal ditambahkan.';
+                }
+            } catch (PDOException $e) {
+                $flash_type = 'danger';
+                if ($e->getCode() === '23000') {
+                    $flash_message = "ID Barang {$id_barang_full} sudah ada. Data tidak disimpan ulang.";
+                } else {
+                    $flash_message = 'Terjadi error server saat menyimpan barang. Silakan cek error log.';
+                }
+            }
+        }
     }
 }
 
@@ -236,6 +267,11 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
 <div class="ml-64 p-8">
 <h2 class="text-center my-4 text-2xl font-bold">Tambah Barang</h2>
 <div class="container mx-auto p-4 bg-white shadow-md rounded">
+    <?php if ($flash_message): ?>
+        <div class="mb-4 rounded-lg border px-4 py-3 <?php echo $flash_type === 'danger' ? 'border-red-200 bg-red-50 text-red-700' : 'border-green-200 bg-green-50 text-green-700'; ?>">
+            <?php echo htmlspecialchars($flash_message, ENT_QUOTES, 'UTF-8'); ?>
+        </div>
+    <?php endif; ?>
     <form action="tambah_barang.php" method="post" class="space-y-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
