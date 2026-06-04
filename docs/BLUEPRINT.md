@@ -1,20 +1,21 @@
 ---
 title: "Blueprint — Inventory Denta Sejahtera Group"
-description: "Acuan awal migrasi project inventory lama dari XAMPP ke hosting subdomain inventory.dentasejahteragroup.my.id via FTP."
+description: "Acuan migrasi, operasi live, UI/UX, troubleshooting, dan maintenance project inventory.dentasejahteragroup.my.id."
 project: inventory-dsg
 created: "2026-05-04"
-updated: "2026-05-04"
+updated: "2026-06-04"
 tags: [inventory, dsg, hosting, ftp, xampp, migration, php, mysql]
 ---
 
 # Blueprint — Inventory Denta Sejahtera Group
 
 ## Ringkasan
-Project baru/legacy awal belajar milik Tuan Besar. Aplikasi sebelumnya berjalan lokal di **XAMPP** dan sekarang akan dimigrasikan ke hosting pada subdomain:
+Project legacy PHP native/XAMPP milik Tuan Besar yang sekarang sudah berjalan live di shared hosting pada subdomain:
 
 - URL/subdomain: `inventory.dentasejahteragroup.my.id`
 - Target akses awal: hosting shared/cPanel-style via **FTP**
-- Status awal: di FTP sudah ada file ZIP backup dan file SQL; database akan dibantu/dibuat lewat phpMyAdmin oleh Tuan Besar bila perlu.
+- Status saat ini: live production kecil/sederhana, sudah dimigrasikan, dimodernisasi bertahap, dan tetap perlu prinsip backup-before-edit.
+- Repo referensi/source: `/root/.openclaw/workspace/Inventory-Gudang` / GitHub `remek8787/Inventory-Gudang`.
 
 ## Kredensial FTP
 > Sensitif. Jangan tampilkan ulang di grup/publik.
@@ -103,12 +104,41 @@ $password = '';
 
 Perlu diganti ke credential database hosting setelah DB dibuat.
 
-## Next Action
-1. Tunggu credential database hosting dari Tuan Besar: `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`.
-2. Update `belanja/db.php`.
-3. Import SQL ke phpMyAdmin/database hosting.
-4. Upload file aplikasi ke root subdomain via FTP.
-5. Test `https://inventory.dentasejahteragroup.my.id/`.
+## Current Runtime / Live State — 2026-06-04
+
+- Live URL: `https://inventory.dentasejahteragroup.my.id/`
+- Aplikasi: PHP native, shared hosting, PHP 7.2.x/LiteSpeed.
+- Database live sudah berjalan pada DB hosting `dentame1_inventory` (credential tersimpan privat di live `belanja/db.php` dan cache lokal sebelumnya; jangan commit/echo credential).
+- Login admin live sudah pernah diverifikasi, tetapi jangan tampilkan password di output.
+- Source repo lokal: `/root/.openclaw/workspace/Inventory-Gudang`.
+- Backup/migration artifacts: `/root/.openclaw/workspace/projects/inventory-dsg/`.
+- Temporary live-audit files harus selalu dihapus setelah dipakai.
+
+## Operational Playbook untuk Agent Baru
+
+1. Baca blueprint ini dulu sebelum edit inventory.
+2. Cek status source repo: `git -C /root/.openclaw/workspace/Inventory-Gudang status --short --branch`.
+3. Ambil/backup file live sebelum overwrite, terutama file PHP aktif di `belanja/`, `gudang/`, `quality_control/`.
+4. Jangan commit `belanja/db.php` asli atau credential FTP/DB.
+5. Untuk audit DB live, boleh pakai temporary PHP script via FTP hanya jika perlu; script harus:
+   - memakai `require __DIR__ . '/belanja/db.php';`
+   - melakukan safety check ketat,
+   - output secukupnya,
+   - langsung dihapus setelah selesai.
+6. Untuk perubahan data live, wajib:
+   - baca row target dulu,
+   - backup before/after ke `/root/.openclaw/workspace/state/`,
+   - update hanya row yang match kondisi spesifik,
+   - verifikasi lewat halaman live/endpoint.
+7. Setelah perubahan penting, update blueprint ini + memory harian.
+
+## Next Action / Backlog Aman
+
+1. Tambah validasi stok agar input tidak bisa typo ribuan tanpa konfirmasi.
+2. Rapikan `gudang/stok_gudang.php` supaya bisa drill-down detail per tipe barang.
+3. Tambah audit log sederhana untuk perubahan stok manual.
+4. Refactor bertahap query raw yang tersisa ke prepared PDO.
+5. Pertahankan flow lama dulu; jangan rombak DB besar tanpa approval Tuan Besar.
 
 
 ## UI/UX Modernization 2026-05-04
@@ -315,3 +345,36 @@ Perbaikan:
 Verifikasi:
 - `https://inventory.dentasejahteragroup.my.id/qr-code-ganrate/` HTTP 200.
 - Dashboard tetap redirect login jika belum login, dan link QR tersedia setelah login.
+
+## Incident — Fix Stok ISOLASI Tidak Wajar 2026-06-04
+
+Latar belakang:
+- Tuan Besar melaporkan ada data stok barang tidak wajar sampai ribuan di live inventory.
+- Halaman `gudang/stok_gudang.php` menunjukkan `ISOLASI = 67182`.
+
+Audit:
+- Agent membaca blueprint ini dan menggunakan credential/konteks privat yang sudah tersimpan lokal.
+- Browser host tidak tersedia, sehingga pengecekan dilakukan via HTTP/curl dan temporary PHP script lewat FTP.
+- Query detail `barang_masuk_gudang` menemukan satu row jelas keliru:
+  - `id_barang = DNACS67172`
+  - `nama_barang = ISOLASI`
+  - `tipe_barang = ISOLASI`
+  - `stok = 67172`
+  - metadata: satuan `Pcs`, toko `SHOPEE`, ekspedisi `JNT`, order `ETIK`, QC `mifta`, tanggal 2025-08-25.
+- Row ISOLASI lain normal di rentang `0` atau `1`.
+
+Perbaikan:
+- Backup before/after row disimpan di:
+  - `/root/.openclaw/workspace/state/inventory-stock-fix-20260604-142758.json`
+- Update dilakukan hanya pada row spesifik itu dengan safety condition:
+  - `stok 67172 -> 1`
+- Temporary PHP script audit/fix dihapus dari hosting setelah selesai.
+
+Verifikasi:
+- Live `gudang/stok_gudang.php` HTTP 200.
+- Total `ISOLASI` berubah dari `67182` menjadi `11`.
+- Output halaman stok tidak lagi menunjukkan tipe barang dengan total ribuan.
+
+Pelajaran:
+- Tambahkan validasi input stok: jika stok > 100 atau di luar batas wajar, tampilkan konfirmasi keras atau blokir sesuai aturan admin.
+- Untuk item satuan kecil seperti isolasi/alat kecil, input ribuan kemungkinan typo dan harus ditinjau manual sebelum disimpan.
